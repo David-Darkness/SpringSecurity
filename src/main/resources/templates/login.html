@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+</head>
+<body>
+<div class="login-container">
+    <form action="/process_login" method="post">
+        <input type="checkbox" class="input-check" id="input-check">
+        <label for="input-check" class="toggle">
+            <span class="text off">Off</span>
+            <span class="text on">On</span>
+        </label>
+        <div class="login-light"></div>
+        <h2>Login</h2>
+
+        <!-- Mensaje de error si el login falla -->
+        <div th:if="${param.error}" class="error-box">
+            <p>❌ Usuario o contraseña incorrectos.</p>
+        </div>
+
+        <!-- Mensaje si el usuario cerró sesión -->
+        <div th:if="${param.logout}" class="logout-box">
+            <p>✅ Has cerrado sesión correctamente.</p>
+        </div>
+
+
+        <div class="input-box">
+            <span class="icon"><ion-icon name="person"></ion-icon></span>
+            <input type="text" name="username" required>
+            <label>Usuario</label>
+            <div class="input-line"></div>
+        </div>
+
+        <div class="input-box">
+            <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+            <input type="password" name="password" required>
+            <label>Contraseña</label>
+            <div class="input-line"></div>
+        </div>
+
+        <button type="submit">Login</button>
+    </form>
+</div>
+
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
+
